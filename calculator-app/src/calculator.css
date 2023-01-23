@@ -1,0 +1,20 @@
+.calculator-container{
+    background-color: var(--page-dark);
+    height: 55em;
+    width: 30em;
+}
+
+.symbol-container{
+    background-color: var(--symbol-container-dark);
+    height: 50%;
+    width: 100%;
+    align-self: flex-end;
+}
+
+.symbol{
+    height: 3em;    
+    flex-basis: 22%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
