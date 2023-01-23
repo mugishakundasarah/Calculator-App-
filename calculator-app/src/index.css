@@ -6,6 +6,9 @@
   --page-dark: #22252d;
   --symbol-dark: #282b33;
   --symbol-container-dark: #2a2d37;
+  --symbol-red: #c53d5a;
+  --symbol-green: #3dc7b3;
+  --page-light: #e8e8e8;
 }
 
 .bg-page-dark{
@@ -18,4 +21,20 @@
 
 .bg-symbol-container-dark{
   background-color: var(--symbol-container-dark);
+}
+
+.bg-green{
+  background-color: var(--symbol-green);
+}
+
+.text-green{
+  color: var(--symbol-green);
+}
+
+.text-red{
+  color: var(--symbol-red);
+}
+
+.bg-light{
+  background-color: var(--page-light);
 }
