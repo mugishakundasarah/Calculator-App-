@@ -1,8 +1,10 @@
 import Symbol from "./Components/Symbol";
 import './calculator.css'
 import { useState } from "react";
+import axios from "axios";
 
 const Calculator = () => {
+    let URL = 'http://localhost:5000'
     let [input, setInput] = useState('')
     let [isNegative, setIsNegative] = useState(false)
     let [solution, setSolution] = useState(0)
@@ -15,9 +17,23 @@ const Calculator = () => {
     ]
     
 
+    let fetchResponse = async() => {
+        let symbol;
+        let operand1, operand2;
+        input.split("").forEach(value => {
+            if(isNaN(value)) symbol = value;
+        })
+        let operands = input.split(symbol)
+        operand1 = operands[0]
+        operand2 = operands[1]
+        let result = await axios.post(`${URL}/calculate`, {operand1, operand2, symbol})
+        if(result) setSolution(result.data.data)
+    }
+
     let handleSymbolClick = (symbol) => {
         if(symbol === '='){
-            setSolution(10)
+            console.log("reached")
+            fetchResponse()
         }else if(symbol === '+/-') {
             if(isNegative) {
                 setInput(input.split("").splice(0,1).toString())
@@ -29,7 +45,7 @@ const Calculator = () => {
             }
         }else{
             setInput(`${input}${symbol}`)
-        }
+        }                                               
     }
 
     let handleClear = () => {
